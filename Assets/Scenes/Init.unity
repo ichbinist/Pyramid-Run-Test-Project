@@ -188,7 +188,7 @@ MonoBehaviour:
   OnObjectRemoved:
     m_PersistentCalls:
       m_Calls: []
-  Speed: 5
+  Speed: 7.5
 --- !u!114 &238652708
 MonoBehaviour:
   m_ObjectHideFlags: 0

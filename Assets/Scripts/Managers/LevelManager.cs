@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 public class LevelManager : Singleton<LevelManager>
 {
-    public int CurrentLevelIndex;
+    public int CurrentLevelIndex = 2;
 
     public bool IsLevelStarted;
     public UnityEvent OnLevelStarted = new UnityEvent();
@@ -27,22 +27,13 @@ public class LevelManager : Singleton<LevelManager>
         if (GameState)
         {
             OnSceneSuccess.Invoke();
-            SceneController.Instance.UnloadLevel(CurrentLevelIndex);
-
-            CurrentLevelIndex++;
-            if(SceneManager.sceneCount <= CurrentLevelIndex)
-            {
-                CurrentLevelIndex = 2;
-            }
-
-            SceneController.Instance.LoadLevel(CurrentLevelIndex);
-
         }
         else
         {
             OnSceneFail.Invoke();
-            SceneController.Instance.UnloadLevel(CurrentLevelIndex);
-            SceneController.Instance.LoadLevel(CurrentLevelIndex);
         }
+
+        SceneController.Instance.UnloadLevel(CurrentLevelIndex);
+        SceneController.Instance.LoadLevel(CurrentLevelIndex);
     }
 }
